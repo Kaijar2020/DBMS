@@ -1,0 +1,50 @@
+CREATE DATABASE university;
+
+
+CREATE TABLE student
+(
+    S_ID int NOT NULL,
+    S_NAME varchar(20) NOT NULL,
+    Batch int NOT NULL,
+    CGPA double(3,2)
+    
+    
+    
+    );
+
+INSERT INTO student
+VALUES
+(101,'soumik',27,3.90),
+(102,'sabab',39,4.00),
+(103,'hasan',28,4.00),
+(104,'lee',25,3.94),
+(105,'anup',26,3.77);
+
+CREATE TABLE course
+(
+    Course_Code int NOT NULL,
+    Course_Name varchar(20),
+    Batch int,
+    Depertment varchar(10),
+    PRIMARY KEY(Course_Code)
+);
+
+INSERT INTO course
+VALUES
+(1201,'DBMS',27,'CSE'),
+(1215,'ENG',39,'English'),
+(1208,'EC-I',25,'EEE'),
+(1210,'OS',28,'CSE'),
+(1200,'MAT',26,'IPE');
+
+
+--------------
+SELECT student.S_ID,student.S_NAME,student.Batch,student.CGPA,course.Course_Name,course.Course_Code,course.Depertment
+FROM student INNER JOIN course ON student.Batch=course.Batch
+
+
+SELECT student.S_ID,student.S_NAME,student.Batch,student.CGPA,course.Course_Name,course.Course_Code,course.Depertment
+FROM student LEFT JOIN course ON student.Batch=course.Batch
+
+SELECT student.S_ID,student.S_NAME,student.Batch,student.CGPA,course.Course_Name,course.Course_Code,course.Depertment
+FROM student RIGHT JOIN course ON student.Batch=course.Batch

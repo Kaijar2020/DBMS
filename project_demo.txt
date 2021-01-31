@@ -1,0 +1,70 @@
+CREATE TABLE Doctor
+(
+    Dr_id int NOT NULL,
+    Dr_name varchar(20) NOT NULL,
+    Dr_dept varchar(20) NOT NULL,
+    PRIMARY KEY (Dr_id)
+    
+
+)
+INSERT INTO doctor 
+VALUES
+(100,'Dr. abid','Medicine'),
+(101,'Dr. Faiza','Medicine'),
+(102,'Dr. Galib','Urology'),
+(103,'Dr. Khan','Phycology'),
+(104,'Dr. Bikash','Cardiology'),
+(105,'Dr. Zinia','ENT'),
+(106,'Dr. Asma','Urology'),
+(107,'Dr. Mita','Surgeon'),
+(108,'Dr. Farid','ENT'),
+(109,'Dr. Karim','Surgeon')
+
+CREATE TABLE lab
+(
+    lab_no int NOT NULL,
+    P_id int NOT NULL,
+    Dr_id int NOT NULL,
+    Amount int NOT NULL,
+    Catagory varchar(20),
+    PRIMARY KEY (lab_no)
+)
+INSERT INTO lab
+VALUES
+(1,300,101,100,'Blood test'),
+(2,301,100,700,'X-Ray'),
+(3,302,105,4000,'Covid-19 test'),
+(4,303,109,650,'X-Ray'),
+(5,305,105,4000,'Covid-19 test'),
+(6,304,108,5000,'Coloronoscopy'),
+(7,309,106,1500,'Uric Acid'),
+(8,303,109,100,'Blood test'),
+(9,307,107,2000,'ECG'),
+(10,308,102,2500,'ECG')
+
+
+CREATE TABLE patient
+(
+    P_id int NOT NULL,
+    P_Name varchar (20) NOT NULL,
+    Gender varchar (10) ,
+    Dr_id int NOT NULL,
+    Age int NOT NULL,
+    PRIMARY KEY (P_id) 
+)
+
+INSERT INTO patient
+VALUES
+(300,'Easin','Male',101,30),
+(301,'Maliha','Female',100,30),
+(302,'Mamun','Male',105,30),
+(303,'Mina','Female',109,30),
+(304,'Maisha','Female',108,30),
+(305,'Karim','Male',105,30),
+(306,'Kedar','Male',105,30),
+(307,'Khalil','Male',107,30),
+(308,'Sara','Female',102,30),
+(309,'Siraj','Male',106,30)
+
+
+SELECT patient.P_Name,doctor.Dr_name,lab.Catagory,patient.Age,lab.Amount FROM patient JOIN doctor ON patient.Dr_id=doctor.Dr_id JOIN lab ON lab.Dr_id=doctor.Dr_id WHERE patient.Age=(SELECT MAX(patient.Age) FROM patient)

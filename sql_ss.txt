@@ -1,0 +1,71 @@
+CREATE DATABASE product_dbms;
+
+CREATE TABLE products
+(
+	product_item varchar(20),
+    sell_item varchar(20),
+    date DATE,
+    price int(10),
+    countries varchar(20),
+    product_number int(10),
+    fax_number int(20),
+    PRIMARY KEY(product_number),
+    UNIQUE(fax_number)
+);
+
+INSERT INTO products
+VALUES
+('Bike','Yamaha R15S',NULL,200,'UAE',01,1234),
+('Car','BMW','2013-02-01',298,'Germany',02,NULL),
+('Monitor','hp','2013-07-08',120,'UK',03,NULL),
+('Calculator','casio','2014-02-01',28,'Japan',04,NULL),
+('Iphone','Iphon 12','2020-03-16',100,'USA',05,1010),
+('Pen',NULL,'2016-08-19',10,'Japan',06,NULL),
+('Watch','Casio','2015-09-10',59,'Japan',07,9559),
+('Cement','JsW',NULL,5,'UK',08,NULL),
+('Processor','Snap-dragon',NULL,17,'USA',09,6754),
+('Medicene',NULL,'2012-12-12',NULL,'USA',10,NULL);
+
+i.SELECT COUNT(product_item), SUM(price)
+FROM products
+WHERE date
+BETWEEN '2013-02-01' AND '2014-02-01';
+ii.SELECT *
+FROM products
+WHERE price
+NOT BETWEEN 10 AND 100;
+
+iii.SELECT * FROM `products` WHERE fax_number is NUL;
+
+
+iv.SELECT product_item,`countries` FROM productss WHERE `countries` ='USA' OR `countries`='Japan' OR `countries` = 'UK';
+
+v.SELECT product_item, price 
+FROM products 
+WHERE price`=(SELECT MIN(price) FROM products);
+
+
+vi.SELECT DISTINCT `countries` FROM products ;
+
+
+
+=========================================
+
+
+CREATE TABLE course
+(
+    course_id int(10),
+    course_name varchar(20),
+    Depertment varchar(20),
+    course_teacher varchar (20)
+    );
+
+INSERT INTO course
+VALUES
+(111,'DBMS','CSE','TT'),
+(101,'DS','CSE','RAM'),
+(319,'TOC','CSE','GH'),
+(222,'EC-I','EEE','SI'),
+(300,'ENG','CIVIL','AT');
+
+    
